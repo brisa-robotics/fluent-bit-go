@@ -42,6 +42,10 @@ const (
 type FLBPluginProxyDef C.struct_flb_plugin_proxy_def
 type FLBOutPlugin C.struct_flbgo_output_plugin
 
+func FLBError() {
+	C.flb_log_check_level(1,1)
+}
+
 // When the FLBPluginInit is triggered by Fluent Bit, a plugin context
 // is passed and the next step is to invoke this FLBPluginRegister() function
 // to fill the required information: type, proxy type, flags name and

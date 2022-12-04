@@ -20,8 +20,26 @@
 #ifndef FLBGO_OUTPUT_H
 #define FLBGO_OUTPUT_H
 
+#define FLB_FALSE  0
+#define FLB_TRUE   !FLB_FALSE
+
+/*
+ * This function is used by plugins interface to check if an incoming log message
+ * should be logged or not based in the log levels defined.
+ */
+static inline int flb_log_check_level(int level_set, int msg_level)
+{
+    if (msg_level <= level_set) {
+        return FLB_TRUE;
+    }
+
+    return FLB_FALSE;
+}
+
+
 struct flb_api {
     char *(*output_get_property) (char *, void *);
+    void (*log_print) (int, const char*, int, const char*, ...);
     char *_;
 };
 

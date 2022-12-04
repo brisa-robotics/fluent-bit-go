@@ -7,6 +7,7 @@ import (
 	"unsafe"
 
 	"github.com/fluent/fluent-bit-go/output"
+	// "fluent-bit-go/output"
 )
 
 //export FLBPluginRegister
